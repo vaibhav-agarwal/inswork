@@ -1,0 +1,33 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+instance_class: F1
+automatic_scaling:
+  min_idle_instances: 0
+  max_idle_instances: 0
+  min_pending_latency: 10s
+  max_pending_latency: 15s
+
+libraries:
+- name: django
+  version: "1.11"
+
+- name: ssl
+  version: latest
+
+handlers:
+
+- url: /_ah/(mapreduce|queue|warmup).*
+  script: assignment.wsgi.application
+  login: admin
+
+- url: /inswork/.*
+  script: assignment.wsgi.application
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^env/.*$
