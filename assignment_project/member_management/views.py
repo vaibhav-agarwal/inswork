@@ -14,7 +14,7 @@ import traceback
 from assignment import MemberException
 from models import TeamMembers
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 class AddMemberView(View):
 
 

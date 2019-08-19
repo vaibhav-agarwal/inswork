@@ -21,7 +21,7 @@ handlers:
   script: assignment.wsgi.application
   login: admin
 
-- url: /inswork/.*
+- url: /inswork.*
   script: assignment.wsgi.application
 
 skip_files:
